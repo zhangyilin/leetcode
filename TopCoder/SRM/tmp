@@ -1,0 +1,11 @@
+1_550.cpp:unsigned long long factorial (int num, int l){
+1_550.cpp:	unsigned long long rValue = 1;
+1_550.cpp:	typedef std::pair<string,unsigned long long> LotteryOdds;
+1_550.cpp:	unsigned long long odd = 0;
+1_550.cpp:		odd = pow((long double)choices, blanks);
+3_1000.cpp:	long long paths(bool flag, int currentDistance, int currentHeight, int currentLandmarks, int distance, int maxHeight, vector<int> & landmarks){
+3_1000.cpp:		long long ret = 0;
+3_1000.cpp:	long long numPaths(int distance, int maxHeight, vector<int> landmarks){
+3_250.cpp:		transform (points.begin(), points.end(), inserter(rValue, rValue.begin()), std::bind2nd(std::divides<long double>(), (long double)total/100) );
+factorial.cpp:unsigned long long C (int num, int l){
+factorial.cpp:	unsigned long long rValue = 1;
