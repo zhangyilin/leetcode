@@ -1,0 +1,37 @@
+class Solution {
+  public:
+    void helper(vector<string>& result, const string& s, const int& n){ 
+      int len = s.length();
+      if (n==0 && len==0){
+        result = vector<string> (1, "");
+        return;
+      }   
+      if (len>n*3 || len<n)   {   
+        result = vector<string> (0);
+        return;
+      }   
+      int seg=0;
+      string sub_s="";
+      for (int i=0; i<min(3,len); ++i){
+        seg = seg*10 + s[i]-'0';
+        sub_s += s[i];
+        if (seg<256){
+          vector<string> sub_result(0);
+          helper(sub_result, s.substr(i+1), n-1);
+          if (sub_result.size()>0){
+            for (int j=0; j<sub_result.size(); ++j){
+              string del = (n==1?"":".");
+              result.push_back(sub_s + del + sub_result[j]);
+            }
+          }
+        }
+        if (i==0 && s[i] == '0')    return;
+      }   
+    }   
+    vector<string> restoreIpAddresses(string s) {
+      // Note: The Solution object is instantiated only once and is reused by each test case.
+      vector<string> result(0);
+      helper (result, s, 4); 
+      return result;
+    }   
+};
