@@ -1,4 +1,48 @@
 class Solution {
+public:
+    vector<int> combine(int s, int m, int l){
+        vector<int> combine;
+        combine.push_back(s);
+        combine.push_back(m);
+        combine.push_back(l);
+        return combine;
+    }
+    vector<vector<int> > threeSum(vector<int> &num) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        vector<vector<int> > result(0);
+        if (num.size()<3)    return result;
+        sort (num.begin(), num.end());
+        int cur = 0;
+        for (int i=0; i<num.size(); ++i){
+            if (i+3<num.size() && num[i+3]==num[i]) continue;
+            num[cur++] = num[i];
+        }
+        num.resize(cur);
+        for (int i=0; i<num.size(); ++i){
+            if (i-1>=0 && num[i-1]==num[i]) continue;
+            int j=i+1;
+            int k=num.size()-1;
+            while (j<k){
+                if (num[i]+num[j]+num[k]==0){
+                    result.push_back(combine(num[i],num[j],num[k]));
+                    do{
+                        ++j;
+                    }while (j<=k && num[j-1]==num[j]);
+                    do{
+                        --k;
+                    }while (j<=k && num[k+1]==num[k]);
+                }else if (num[i]+num[j]+num[k]<0){
+                    ++j;
+                }else{
+                    --k;
+                }
+            }
+        }
+        return result;
+    }
+};
+/*
+class Solution {
     public:
         vector<vector<int> > threeSum(vector<int> &num) {
             // Start typing your C/C++ solution below
@@ -50,3 +94,4 @@ class Solution {
             return unique_solution_set;
         }
 };
+*/
